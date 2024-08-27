@@ -31,22 +31,23 @@ point_list = []
 i = 0
 max = 3000_000
 
-# while i < max:
-#     point = Point("symbol") \
-#         .tag("symbol_id", random.choice(symbol_list)) \
-#         .tag("source", random.choice(source_list)) \
-#         .field("price", float(random.uniform(0, 1))) \
-#         .time(time=datetime.datetime.now(tz=datetime.timezone.utc),
-#               write_precision=WritePrecision.NS)  # 时间戳转换为毫秒 , precision=6 表示纳秒，即毫秒
-#     point_list.append(point)
-#     i = i + 1
-#     if i % 1000 == 0:
-#         write_api.write(bucket=bucket, org=org, record=point_list)
-#         print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"), " insert batch size = 1000 ")
-#         point_list = []
-#
-# write_api.write(bucket=bucket, org=org, record=point_list)
-# print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"), " insert batch size = ", len(point_list))
+while i < max:
+    point = Point("symbol") \
+        .tag("symbol_id", random.choice(symbol_list)) \
+        .tag("source", random.choice(source_list)) \
+        .field("price", float(random.uniform(0, 1))) \
+        .time(time=datetime.datetime.now(tz=datetime.timezone.utc),
+              write_precision=WritePrecision.NS)  # 时间戳转换为毫秒 , precision=6 表示纳秒，即毫秒
+    point_list.append(point)
+    i = i + 1
+    if i % 1000 == 0:
+        write_api.write(bucket=bucket, org=org, record=point_list)
+        print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"), " insert batch size = 1000 ")
+        point_list = []
+        time.sleep(0.002)
+
+write_api.write(bucket=bucket, org=org, record=point_list)
+print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"), " insert batch size = ", len(point_list))
 
 # ' |> range(start: 0, stop: now())'
 

@@ -14,15 +14,11 @@ admin123
 
 ![1724648271148](image/README/1724648271148.png)
 
-
-
 influx config create --config-name onboarding
     --host-url "http://localhost:8086"
     --org "5469caff5112762e"
     --token "3lR92AhlSEUqy4vU7baECT9lJM7vlcfaBpW2VH717koCaFTQ0jvhqam2gW70jz01sN8c4nHFRMvbIqlff1UhmA=="
     --active
-
-
 
 ```
 
@@ -58,11 +54,15 @@ from(bucket: "symbol-bucket-200408")
   
 ```
 
-
-
 https://grafana.com/docs/grafana/latest/setup-grafana/installation/mac/
-
 
 https://blog.csdn.net/weixin_45589713/article/details/136059049
 
 https://cloud.tencent.com/developer/article/2305835
+
+https://blog.csdn.net/weixin_52315708/article/details/140752367
+
+http://localhost:8086/api/v2/config
+
+
+![1724723677391](image/README/1724723677391.png)
